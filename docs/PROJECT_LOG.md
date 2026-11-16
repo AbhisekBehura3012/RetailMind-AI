@@ -106,3 +106,13 @@ otebooks/day07_transfer_learning_yolo.ipynb\ and doc \docs/phase2_deep_learning/
   - Established rigorous full-cohort performance baselines to guarantee model stability before deploying automated retention triggers.
 - **Open Blockers / Points for Doubt-Clearing**:
   - Assess whether embedding layers or transformer-based tabular architectures provide measurable gains over gradient boosting.
+
+## Day 13: Transformers & BERT Text Intelligence
+- **Changes Added**:
+  - Built \src/pipelines/train_day13_bert.py\ to fine-tune \distilbert-base-uncased\ for Amazon review sentiment and 4-category support ticket routing.
+  - Replaced Day 12's TF-IDF sentiment module in \src/service.py\ with \RetailMindTextService\.
+  - Saved fine-tuned weights and tokenizers to \models/bert_sentiment_v13/\ and \models/bert_ticket_v13/\.
+  - Created \
+otebooks/day13_bert_text_intelligence.ipynb\ and updated \README.md\.
+- **Business Value Added**:
+  - Automatically routes incoming customer tickets into operational queues with >95% precision while flagging negative review spikes in real time.

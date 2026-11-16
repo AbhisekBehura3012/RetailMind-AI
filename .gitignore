@@ -6,3 +6,6 @@ data/raw/*.csv
 models/*.joblib
 models/*.keras
 runs/
+
+models/bert_sentiment_v13/
+models/bert_ticket_v13/
