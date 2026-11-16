@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report, accuracy_score, f1_score
 
@@ -54,13 +54,13 @@ def get_ticket_routing_data():
 def run_day12_nlp():
     os.makedirs(MODEL_DIR, exist_ok=True)
 
-    # 1. Train Sentiment Baseline (TF-IDF + Logistic Regression)
+    # 1. Train Sentiment Baseline (TF-IDF + Multinomial Naive Bayes)
     X_sent, y_sent = get_review_sentiment_data()
     X_tr, X_te, y_tr, y_te = train_test_split(X_sent, y_sent, test_size=0.20, random_state=42, stratify=y_sent)
 
     sent_pipe = Pipeline([
         ("tfidf", TfidfVectorizer(ngram_range=(1, 2), max_features=5000, stop_words="english")),
-        ("clf", LogisticRegression(max_iter=1000, random_state=42))
+        ("clf", MultinomialNB(alpha=0.5))
     ])
     sent_pipe.fit(X_tr, y_tr)
     preds_sent = sent_pipe.predict(X_te)
@@ -73,7 +73,7 @@ def run_day12_nlp():
 
     ticket_pipe = Pipeline([
         ("tfidf", TfidfVectorizer(ngram_range=(1, 2), max_features=5000, stop_words="english")),
-        ("clf", LogisticRegression(max_iter=1000, random_state=42))
+        ("clf", MultinomialNB(alpha=0.5))
     ])
     ticket_pipe.fit(Xt_tr, yt_tr)
     preds_tkt = ticket_pipe.predict(Xt_te)
