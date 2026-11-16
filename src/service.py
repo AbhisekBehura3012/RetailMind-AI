@@ -1,52 +1,41 @@
-import os
+﻿import os
 import joblib
 import pandas as pd
 
-MODEL_PATH = os.path.join("models", "churn_pipeline_v1.joblib")
+SENTIMENT_MODEL_PATH = os.path.join("models", "tfidf_sentiment_v12.joblib")
+TICKET_MODEL_PATH = os.path.join("models", "tfidf_ticket_v12.joblib")
 
-class ChurnPredictorService:
-    def __init__(self, model_path: str = MODEL_PATH):
-        if not os.path.exists(model_path):
-            raise FileNotFoundError(f"Model artefact not found at {model_path}. Run training pipeline first.")
-        self.model = joblib.load(model_path)
-        self.version = "v1-baseline-logistic-regression"
+class RetailMindNLPService:
+    def __init__(self):
+        if not os.path.exists(SENTIMENT_MODEL_PATH) or not os.path.exists(TICKET_MODEL_PATH):
+            raise FileNotFoundError("Day 12 NLP models not found. Run src/pipelines/train_day12_nlp.py first.")
+        self.sent_pipe = joblib.load(SENTIMENT_MODEL_PATH)
+        self.ticket_pipe = joblib.load(TICKET_MODEL_PATH)
 
-    def predict(self, records: pd.DataFrame) -> pd.DataFrame:
-        predictions = self.model.predict(records)
-        probabilities = self.model.predict_proba(records)[:, 1]
+    def analyze_texts(self, texts: list[str]) -> pd.DataFrame:
+        sent_preds = self.sent_pipe.predict(texts)
+        sent_probs = self.sent_pipe.predict_proba(texts).max(axis=1)
+        ticket_preds = self.ticket_pipe.predict(texts)
+        ticket_probs = self.ticket_pipe.predict_proba(texts).max(axis=1)
 
-        result_df = records.copy()
-        result_df["predicted_churn"] = predictions
-        result_df["churn_probability"] = probabilities.round(4)
-        result_df["risk_level"] = result_df["churn_probability"].apply(
-            lambda p: "High Risk" if p >= 0.50 else "Low Risk"
-        )
-        return result_df
+        rows = []
+        for idx, text in enumerate(texts):
+            rows.append({
+                "text": text[:50] + "..." if len(text) > 50 else text,
+                "sentiment": "Positive" if sent_preds[idx] == 1 else "Negative",
+                "sent_conf": round(float(sent_probs[idx]), 4),
+                "routed_queue": ticket_preds[idx],
+                "route_conf": round(float(ticket_probs[idx]), 4)
+            })
+        return pd.DataFrame(rows)
 
 if __name__ == "__main__":
-    sample_customer = pd.DataFrame([{
-        "gender": "Female",
-        "SeniorCitizen": 0,
-        "Partner": "Yes",
-        "Dependents": "No",
-        "tenure": 1,
-        "PhoneService": "No",
-        "MultipleLines": "No phone service",
-        "InternetService": "DSL",
-        "OnlineSecurity": "No",
-        "OnlineBackup": "Yes",
-        "DeviceProtection": "No",
-        "TechSupport": "No",
-        "StreamingTV": "No",
-        "StreamingMovies": "No",
-        "Contract": "Month-to-month",
-        "PaperlessBilling": "Yes",
-        "PaymentMethod": "Electronic check",
-        "MonthlyCharges": 29.85,
-        "TotalCharges": 29.85
-    }])
-
-    service = ChurnPredictorService()
-    print(f"[SERVICE VERSION] {service.version}")
-    response = service.predict(sample_customer)
-    print(response[["MonthlyCharges", "tenure", "churn_probability", "risk_level"]])
+    samples = [
+        "Absolutely love the wireless earbuds, crystal clear sound and fast delivery!",
+        "My package says delivered but nothing arrived, and I was double billed.",
+        "The blender motor started smoking on the first day of use.",
+        "I cannot log into my account because the password reset link is broken."
+    ]
+    service = RetailMindNLPService()
+    print("[ACTIVE SERVICE] Day 12 Classical NLP Intelligence (TF-IDF + Logistic Regression)")
+    print(service.analyze_texts(samples).to_string(index=False))
