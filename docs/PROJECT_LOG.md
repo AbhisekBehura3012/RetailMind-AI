@@ -116,3 +116,10 @@ otebooks/day07_transfer_learning_yolo.ipynb\ and doc \docs/phase2_deep_learning/
 otebooks/day13_bert_text_intelligence.ipynb\ and updated \README.md\.
 - **Business Value Added**:
   - Automatically routes incoming customer tickets into operational queues with >95% precision while flagging negative review spikes in real time.
+
+## Day 12: Classical NLP Text Intelligence (TF-IDF + Multinomial Naive Bayes)
+- **Changes Added**:
+  - Built \src/pipelines/train_day12_nlp.py\ using \TfidfVectorizer(ngram_range=(1, 2))\ and \MultinomialNB\ for binary review sentiment and 4-queue support ticket routing.
+  - Persisted serialized pipelines to \models/tfidf_sentiment_v12.joblib\ and \models/tfidf_ticket_v12.joblib\.
+  - Updated \src/service.py\ with \RetailMindNLPService\ and added \
+otebooks/day12_classical_nlp.ipynb\.
