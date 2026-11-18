@@ -28,3 +28,7 @@
 ### Why BERT Replaced TF-IDF in RetailMind AI
 * **Contextual Negation & Sarcasm**: TF-IDF treats *"not bad at all"* or *"refund never arrived"* as independent bag-of-words n-grams. Self-attention captures long-range negation and context across clauses (+8.1% accuracy lift).
 * **Unified Multi-Task Backbone**: The same DistilBERT architecture handles both customer sentiment polarity and 4-way support ticket triage (Billing & Refunds, Shipping & Delivery, Product Defect, Account & Tech Support).
+
+---
+## Day 14: LLM Apps — Review Theme Summaries & Grounded Support Chatbot
+* Added \src/assistant/llm_assistant.py\ with Hugging Face summarization (+ pure-Python fallback) and a policy-grounded multi-turn LLM chatbot wired via \OPENAI_API_KEY\.

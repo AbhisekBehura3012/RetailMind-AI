@@ -123,3 +123,6 @@ otebooks/day13_bert_text_intelligence.ipynb\ and updated \README.md\.
   - Persisted serialized pipelines to \models/tfidf_sentiment_v12.joblib\ and \models/tfidf_ticket_v12.joblib\.
   - Updated \src/service.py\ with \RetailMindNLPService\ and added \
 otebooks/day12_classical_nlp.ipynb\.
+
+## Day 14: LLM Apps — Summaries & Support Chatbot
+- Implemented \ReviewThemeSummarizer\ and \RetailSupportChatbot\ in \src/assistant/llm_assistant.py\ and exposed via \src/service.py\.
