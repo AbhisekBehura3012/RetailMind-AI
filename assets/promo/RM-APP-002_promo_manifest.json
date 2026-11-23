@@ -1,0 +1,15 @@
+{
+  "sku": "RM-APP-002",
+  "product_name": "AeroFlex All-Weather Jacket",
+  "num_frames": 16,
+  "fps": 8,
+  "duration_seconds": 2.0,
+  "keyframes": [
+    "Frame 01?04: Hero reveal ? AeroFlex All-Weather Jacket emerging from soft studio shadow",
+    "Frame 05?08: 35? orbital pan highlighting technical waterproof breathable outdoor shell jacket in deep navy",
+    "Frame 09?12: Dynamic lighting sweep across signature materials & textures",
+    "Frame 13?16: End-card lockup ? RetailMind Collection (RM-APP-002)"
+  ],
+  "video_backbone": "damo-vilab/text-to-video-ms-1.7b",
+  "output_path": "assets/promo\\RM-APP-002_promo_16f_8fps.svg"
+}

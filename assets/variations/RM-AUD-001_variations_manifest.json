@@ -1,0 +1,41 @@
+[
+  {
+    "sku": "RM-AUD-001",
+    "product_name": "RetailMind Pulse ANC Earbuds",
+    "init_image_ref": "assets/marketing\\RM-AUD-001_seed1042.svg",
+    "theme_key": "autumn_editorial",
+    "strength": 0.35,
+    "guidance_scale": 7.5,
+    "seed": 1153,
+    "prompt": "wireless noise-cancelling earbuds in matte black charging case, warm autumn terracotta and amber studio lighting, soft shadows, seasonal lookbook aesthetic, clean studio product photography, soft diffused rim lighting, minimalist matte slate background, commercial e-commerce hero shot, 8k resolution, sharp focus",
+    "negative_prompt": "blurry, distorted, low quality, watermark, text overlay, signature, deformed geometry, oversaturated, cluttered background, amateur lighting, artifacts",
+    "engine": "Img2Img Spec + Deterministic SVG (runwayml/stable-diffusion-v1-5)",
+    "output_path": "assets/variations\\RM-AUD-001_var_autumn_editorial_s35.svg"
+  },
+  {
+    "sku": "RM-AUD-001",
+    "product_name": "RetailMind Pulse ANC Earbuds",
+    "init_image_ref": "assets/marketing\\RM-AUD-001_seed1042.svg",
+    "theme_key": "cyber_midnight",
+    "strength": 0.55,
+    "guidance_scale": 8.0,
+    "seed": 1264,
+    "prompt": "wireless noise-cancelling earbuds in matte black charging case, sleek midnight obsidian backdrop with subtle cyan rim lighting, luxury tech campaign style, clean studio product photography, soft diffused rim lighting, minimalist matte slate background, commercial e-commerce hero shot, 8k resolution, sharp focus",
+    "negative_prompt": "blurry, distorted, low quality, watermark, text overlay, signature, deformed geometry, oversaturated, cluttered background, amateur lighting, artifacts",
+    "engine": "Img2Img Spec + Deterministic SVG (runwayml/stable-diffusion-v1-5)",
+    "output_path": "assets/variations\\RM-AUD-001_var_cyber_midnight_s55.svg"
+  },
+  {
+    "sku": "RM-AUD-001",
+    "product_name": "RetailMind Pulse ANC Earbuds",
+    "init_image_ref": "assets/marketing\\RM-AUD-001_seed1042.svg",
+    "theme_key": "resort_daylight",
+    "strength": 0.7,
+    "guidance_scale": 8.5,
+    "seed": 1375,
+    "prompt": "wireless noise-cancelling earbuds in matte black charging case, bright sun-drenched architectural terrace, crisp summer morning light, high-fashion editorial, clean studio product photography, soft diffused rim lighting, minimalist matte slate background, commercial e-commerce hero shot, 8k resolution, sharp focus",
+    "negative_prompt": "blurry, distorted, low quality, watermark, text overlay, signature, deformed geometry, oversaturated, cluttered background, amateur lighting, artifacts",
+    "engine": "Img2Img Spec + Deterministic SVG (runwayml/stable-diffusion-v1-5)",
+    "output_path": "assets/variations\\RM-AUD-001_var_resort_daylight_s70.svg"
+  }
+]

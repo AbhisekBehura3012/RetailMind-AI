@@ -1,0 +1,10 @@
+{
+  "sku": "RM-AUD-001",
+  "product_name": "RetailMind Pulse ANC Earbuds",
+  "positive_prompt": "wireless noise-cancelling earbuds in matte black charging case, clean studio product photography, soft diffused rim lighting, minimalist matte slate background, commercial e-commerce hero shot, 8k resolution, sharp focus",
+  "negative_prompt": "blurry, distorted, low quality, watermark, text overlay, signature, deformed geometry, oversaturated, cluttered background, amateur lighting, artifacts",
+  "guidance_scale": 7.5,
+  "seed": 1042,
+  "engine": "Diffusers Spec (runwayml/stable-diffusion-v1-5)",
+  "output_path": "assets/marketing\\RM-AUD-001_seed1042.svg"
+}

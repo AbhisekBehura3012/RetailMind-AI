@@ -1,0 +1,10 @@
+{
+  "sku": "RM-APP-002",
+  "product_name": "AeroFlex All-Weather Jacket",
+  "positive_prompt": "technical waterproof breathable outdoor shell jacket in deep navy, editorial outdoor lifestyle photography, golden hour sunlight, shallow depth of field, authentic modern aesthetic, crisp natural colors, high detail",
+  "negative_prompt": "blurry, distorted, low quality, watermark, text overlay, signature, deformed geometry, oversaturated, cluttered background, amateur lighting, artifacts",
+  "guidance_scale": 8.0,
+  "seed": 2084,
+  "engine": "Diffusers Spec (runwayml/stable-diffusion-v1-5)",
+  "output_path": "assets/marketing\\RM-APP-002_seed2084.svg"
+}

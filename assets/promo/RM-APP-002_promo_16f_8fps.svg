@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="432" viewBox="0 0 768 432">
+  <defs>
+    <linearGradient id="pbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="768" height="432" fill="url(#pbg)" rx="16"/>
+  <circle cx="620" cy="216" r="110" fill="#38bdf8" fill-opacity="0.12">
+    <animate attributeName="r" values="95;125;95" dur="2.0s" repeatCount="indefinite"/>
+  </circle>
+  <rect x="32" y="32" width="704" height="368" fill="none" stroke="#818cf8" stroke-width="1.5" rx="12" stroke-opacity="0.45"/>
+  <text x="56" y="78" fill="#818cf8" font-family="Segoe UI, Arial" font-size="13" font-weight="bold" letter-spacing="2">RETAILMIND AI // INTERPOLATED PROMO CLIP (16 FRAMES @ 8 FPS = 2.0s)</text>
+  <text x="56" y="126" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="28" font-weight="bold">AeroFlex All-Weather Jacket</text>
+  <text x="56" y="160" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="14">SKU: RM-APP-002  |  Seed: 2084  |  Motion Interpolation: Smooth Keyframe Blend</text>
+  <rect x="56" y="188" width="656" height="145" fill="#020617" fill-opacity="0.55" rx="8"/>
+  <text x="74" y="218" fill="#38bdf8" font-family="Consolas, monospace" font-size="13">KEYFRAME INTERPOLATION TIMELINE:</text>
+  <text x="74" y="244" fill="#e2e8f0" font-family="Segoe UI, Arial" font-size="13">? Frame 01?04: Hero reveal ? AeroFlex All-Weather Jacket emerging from soft studio shadow</text>
+  <text x="74" y="268" fill="#e2e8f0" font-family="Segoe UI, Arial" font-size="13">? Frame 05?08: 35? orbital pan highlighting technical waterproof breathable outdoor shell jacket in deep navy</text>
+  <text x="74" y="292" fill="#e2e8f0" font-family="Segoe UI, Arial" font-size="13">? Frame 09?12: Dynamic lighting sweep across signature materials & textures</text>
+  <text x="74" y="316" fill="#e2e8f0" font-family="Segoe UI, Arial" font-size="13">? Frame 13?16: End-card lockup ? RetailMind Collection (RM-APP-002)</text>
+  <rect x="56" y="356" width="0" height="6" fill="#38bdf8" rx="3">
+    <animate attributeName="width" from="0" to="656" dur="2.0s" repeatCount="indefinite"/>
+  </rect>
+</svg>

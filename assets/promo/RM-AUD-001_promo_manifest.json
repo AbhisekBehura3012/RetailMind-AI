@@ -1,0 +1,15 @@
+{
+  "sku": "RM-AUD-001",
+  "product_name": "RetailMind Pulse ANC Earbuds",
+  "num_frames": 16,
+  "fps": 8,
+  "duration_seconds": 2.0,
+  "keyframes": [
+    "Frame 01?04: Hero reveal ? RetailMind Pulse ANC Earbuds emerging from soft studio shadow",
+    "Frame 05?08: 35? orbital pan highlighting wireless noise-cancelling earbuds in matte black charging case",
+    "Frame 09?12: Dynamic lighting sweep across signature materials & textures",
+    "Frame 13?16: End-card lockup ? RetailMind Collection (RM-AUD-001)"
+  ],
+  "video_backbone": "damo-vilab/text-to-video-ms-1.7b",
+  "output_path": "assets/promo\\RM-AUD-001_promo_16f_8fps.svg"
+}

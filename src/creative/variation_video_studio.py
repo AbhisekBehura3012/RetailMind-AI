@@ -220,12 +220,10 @@ class VariationAndVideoStudio:
 
 if __name__ == "__main__":
     studio = VariationAndVideoStudio()
-    print("=== DAY 16 IMG2IMG VARIATIONS & PROMO VIDEO STUDIO ===
-")
+    print("=== DAY 16 IMG2IMG VARIATIONS & PROMO VIDEO STUDIO ===")
     variations = studio.generate_variations("jacket")
     for v in variations:
         print(f"[VARIATION] {v['sku']} | Theme: {v['theme_key']} | Strength: {v['strength']} -> {v['output_path']}")
 
     clip = studio.generate_promo_clip("jacket", num_frames=16, fps=8)
-    print(f"
-[PROMO CLIP] {clip['sku']} | {clip['num_frames']} frames @ {clip['fps']} FPS ({clip['duration_seconds']}s) -> {clip['output_path']}")
+    print(f"[PROMO CLIP] {clip['sku']} | {clip['num_frames']} frames @ {clip['fps']} FPS ({clip['duration_seconds']}s) -> {clip['output_path']}")

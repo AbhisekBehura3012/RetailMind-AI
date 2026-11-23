@@ -1,0 +1,10 @@
+{
+  "sku": "RM-KIT-003",
+  "product_name": "SmartBrew Pro Blender",
+  "positive_prompt": "brushed stainless steel high-speed countertop blender with glass pitcher, modern architectural kitchen countertop, warm ambient lighting, marble surface, clean editorial catalog photography, ultra-sharp focus",
+  "negative_prompt": "blurry, distorted, low quality, watermark, text overlay, signature, deformed geometry, oversaturated, cluttered background, amateur lighting, artifacts",
+  "guidance_scale": 7.5,
+  "seed": 3126,
+  "engine": "Diffusers Spec (runwayml/stable-diffusion-v1-5)",
+  "output_path": "assets/marketing\\RM-KIT-003_seed3126.svg"
+}
