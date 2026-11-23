@@ -126,3 +126,7 @@ otebooks/day12_classical_nlp.ipynb\.
 
 ## Day 14: LLM Apps — Summaries & Support Chatbot
 - Implemented \ReviewThemeSummarizer\ and \RetailSupportChatbot\ in \src/assistant/llm_assistant.py\ and exposed via \src/service.py\.
+
+## Day 16: Image Variations & Short Promo Video Generation
+- Built `src/creative/variation_video_studio.py` with `StableDiffusionImg2ImgPipeline` strength/guidance sweeps (`0.35` to `0.70`) and keyframe-interpolated short promo clip generation.
+- Extended `src/service.py` with `create_campaign_pack()` and added `notebooks/day16_img2img_video_promo.ipynb`.
