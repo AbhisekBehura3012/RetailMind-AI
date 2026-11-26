@@ -130,3 +130,7 @@ otebooks/day12_classical_nlp.ipynb\.
 ## Day 16: Image Variations & Short Promo Video Generation
 - Built `src/creative/variation_video_studio.py` with `StableDiffusionImg2ImgPipeline` strength/guidance sweeps (`0.35` to `0.70`) and keyframe-interpolated short promo clip generation.
 - Extended `src/service.py` with `create_campaign_pack()` and added `notebooks/day16_img2img_video_promo.ipynb`.
+
+## Day 17: TTS Voice Replies & CLIP Multimodal Product Search
+- Built `src/multimodal/voice_and_clip.py` with `TTSVoiceEngine` (`.wav` voice reply synthesis) and `CLIPMultimodalSearch` (`search_by_text` and `search_by_image` over shared embeddings).
+- Integrated voice support and multimodal search into `src/service.py` and added `notebooks/day17_tts_clip_multimodal.ipynb`, completing the Day 17 Generation Track milestone.

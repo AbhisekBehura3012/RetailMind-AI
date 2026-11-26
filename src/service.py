@@ -1,43 +1,44 @@
 from src.assistant.llm_assistant import ReviewThemeSummarizer, RetailSupportChatbot
 from src.creative.marketing_generator import MarketingImageGenerator
 from src.creative.variation_video_studio import VariationAndVideoStudio
+from src.multimodal.voice_and_clip import TTSVoiceEngine, CLIPMultimodalSearch
 
 
 class RetailMindPlatformService:
-    """Unified GenAI Platform Service (Days 14-16: LLM Assistant + Diffusion Creative & Video Studio)."""
+    """Unified Generation-Track Platform Service (Days 14-17: LLM, Diffusion, Video, TTS Voice & CLIP Search)."""
 
     def __init__(self):
         self.summarizer = ReviewThemeSummarizer()
         self.chatbot = RetailSupportChatbot()
         self.creative_studio = MarketingImageGenerator()
         self.variation_studio = VariationAndVideoStudio()
+        self.voice_engine = TTSVoiceEngine()
+        self.multimodal_search = CLIPMultimodalSearch()
 
-    def summarize_product_reviews(self, product_name: str, reviews: list[str]) -> dict:
-        return self.summarizer.summarize_reviews(product_name, reviews)
-
-    def ask_support_bot(self, message: str) -> str:
-        return self.chatbot.chat(message)
-
-    def generate_marketing_visual(self, product_key: str, custom_setting: str = "") -> dict:
-        return self.creative_studio.generate_asset(product_key, custom_setting=custom_setting)
-
-    def create_campaign_pack(self, product_key: str) -> dict:
-        base_asset = self.creative_studio.generate_asset(product_key)
-        variations = self.variation_studio.generate_variations(product_key, init_image_path=base_asset["output_path"])
-        promo_clip = self.variation_studio.generate_promo_clip(product_key)
+    def ask_support_with_voice(self, message: str) -> dict:
+        text_reply = self.chatbot.chat(message)
+        audio_meta = self.voice_engine.speak_reply(text_reply, tag="support_voice")
         return {
-            "base_hero": base_asset["output_path"],
-            "variations": [v["output_path"] for v in variations],
-            "promo_clip": promo_clip["output_path"]
+            "text_reply": text_reply,
+            "audio_path": audio_meta["audio_path"],
+            "tts_engine": audio_meta["engine"]
         }
+
+    def search_catalog_text(self, query: str, top_k: int = 2) -> list[dict]:
+        return self.multimodal_search.search_by_text(query, top_k=top_k)
+
+    def search_catalog_image(self, image_path: str, top_k: int = 2) -> list[dict]:
+        return self.multimodal_search.search_by_image(image_path, top_k=top_k)
 
 
 if __name__ == "__main__":
     service = RetailMindPlatformService()
-    print("[ACTIVE SERVICE] RetailMind GenAI Studio (Day 14 Assistant + Days 15-16 Diffusion & Video)\n")
+    print("[ACTIVE SERVICE] RetailMind AI — Generation Track Complete (Days 14–17)\n")
 
-    pack = service.create_campaign_pack("earbuds")
-    print("Hero Asset :", pack["base_hero"])
-    for var_path in pack["variations"]:
-        print("Variation  :", var_path)
-    print("Promo Clip :", pack["promo_clip"])
+    voice_resp = service.ask_support_with_voice("What is the battery life and warranty on the Pulse ANC Earbuds?")
+    print("Voice Support Reply :", voice_resp["text_reply"])
+    print("Synthesized WAV     :", voice_resp["audio_path"], "\n")
+
+    print("CLIP Text Search ('wireless black gym audio'):")
+    for r in service.search_catalog_text("wireless black gym audio", top_k=2):
+        print(f"  -> {r['sku']}: {r['name']} (score={r['similarity']})")
