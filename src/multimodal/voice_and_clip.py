@@ -230,8 +230,8 @@ if __name__ == "__main__":
     tts = TTSVoiceEngine()
     voice_out = tts.speak_reply("Welcome to RetailMind Store. Your waterproof jacket is eligible for free 30-day returns.", tag="welcome")
     print("=== DAY 17 TTS VOICE ENGINE ===")
-    print(f"Engine : {voice_out['engine']}")
-    print(f"Audio  : {voice_out['audio_path']}")
+    print("Engine :", voice_out["engine"])
+    print("Audio  :", voice_out["audio_path"])
 
     clip_search = CLIPMultimodalSearch()
     print("=== DAY 17 CLIP MULTIMODAL PRODUCT SEARCH ===")
@@ -239,7 +239,6 @@ if __name__ == "__main__":
     for hit in clip_search.search_by_text("waterproof navy outdoor raincoat", top_k=2):
         print(f"  #{hit['rank']} [{hit['sku']}] {hit['name']} (${hit['price']}) | Cosine Sim: {hit['similarity']}")
 
-    print("
-Image Query ('assets/variations/RM-APP-002_var_autumn_editorial_s35.svg'):")
+    print("Image Query ('assets/variations/RM-APP-002_var_autumn_editorial_s35.svg'):")
     for hit in clip_search.search_by_image("assets/variations/RM-APP-002_var_autumn_editorial_s35.svg", top_k=2):
         print(f"  #{hit['rank']} [{hit['sku']}] {hit['name']} (${hit['price']}) | Cosine Sim: {hit['similarity']}")
