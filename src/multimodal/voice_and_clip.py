@@ -231,8 +231,7 @@ if __name__ == "__main__":
     voice_out = tts.speak_reply("Welcome to RetailMind Store. Your waterproof jacket is eligible for free 30-day returns.", tag="welcome")
     print("=== DAY 17 TTS VOICE ENGINE ===")
     print(f"Engine : {voice_out['engine']}")
-    print(f"Audio  : {voice_out['audio_path']}
-")
+    print(f"Audio  : {voice_out['audio_path']}")
 
     clip_search = CLIPMultimodalSearch()
     print("=== DAY 17 CLIP MULTIMODAL PRODUCT SEARCH ===")
