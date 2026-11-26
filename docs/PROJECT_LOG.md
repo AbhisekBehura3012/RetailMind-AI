@@ -134,3 +134,7 @@ otebooks/day12_classical_nlp.ipynb\.
 ## Day 17: TTS Voice Replies & CLIP Multimodal Product Search
 - Built `src/multimodal/voice_and_clip.py` with `TTSVoiceEngine` (`.wav` voice reply synthesis) and `CLIPMultimodalSearch` (`search_by_text` and `search_by_image` over shared embeddings).
 - Integrated voice support and multimodal search into `src/service.py` and added `notebooks/day17_tts_clip_multimodal.ipynb`, completing the Day 17 Generation Track milestone.
+
+## Day 18: RAG Foundations — Vector DB & Semantic Knowledge Base
+- Built `src/rag/vector_store.py` to chunk product catalog entries and store policies/FAQs (`chunk_size=260, chunk_overlap=50`), embed passages, and persist the vector index to `models/vector_db/`.
+- Exposed `retrieve_knowledge()` in `src/service.py` and added `notebooks/day18_rag_vector_db.ipynb`.

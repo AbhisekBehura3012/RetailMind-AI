@@ -2,10 +2,11 @@ from src.assistant.llm_assistant import ReviewThemeSummarizer, RetailSupportChat
 from src.creative.marketing_generator import MarketingImageGenerator
 from src.creative.variation_video_studio import VariationAndVideoStudio
 from src.multimodal.voice_and_clip import TTSVoiceEngine, CLIPMultimodalSearch
+from src.rag.vector_store import RetailVectorStore
 
 
 class RetailMindPlatformService:
-    """Unified Generation-Track Platform Service (Days 14-17: LLM, Diffusion, Video, TTS Voice & CLIP Search)."""
+    """Unified Enterprise Platform Service (Days 14-18: Generation Track + Persisted RAG Vector DB)."""
 
     def __init__(self):
         self.summarizer = ReviewThemeSummarizer()
@@ -14,6 +15,9 @@ class RetailMindPlatformService:
         self.variation_studio = VariationAndVideoStudio()
         self.voice_engine = TTSVoiceEngine()
         self.multimodal_search = CLIPMultimodalSearch()
+        self.vector_store = RetailVectorStore()
+        if not self.vector_store.load():
+            self.vector_store.build_and_persist()
 
     def ask_support_with_voice(self, message: str) -> dict:
         text_reply = self.chatbot.chat(message)
@@ -27,18 +31,14 @@ class RetailMindPlatformService:
     def search_catalog_text(self, query: str, top_k: int = 2) -> list[dict]:
         return self.multimodal_search.search_by_text(query, top_k=top_k)
 
-    def search_catalog_image(self, image_path: str, top_k: int = 2) -> list[dict]:
-        return self.multimodal_search.search_by_image(image_path, top_k=top_k)
+    def retrieve_knowledge(self, query: str, top_k: int = 3, doc_type: str = None) -> list[dict]:
+        return self.vector_store.similarity_search(query, top_k=top_k, doc_type_filter=doc_type)
 
 
 if __name__ == "__main__":
     service = RetailMindPlatformService()
-    print("[ACTIVE SERVICE] RetailMind AI — Generation Track Complete (Days 14–17)\n")
+    print("[ACTIVE SERVICE] RetailMind AI — Day 18 RAG Vector Knowledge Base Loaded\n")
 
-    voice_resp = service.ask_support_with_voice("What is the battery life and warranty on the Pulse ANC Earbuds?")
-    print("Voice Support Reply :", voice_resp["text_reply"])
-    print("Synthesized WAV     :", voice_resp["audio_path"], "\n")
-
-    print("CLIP Text Search ('wireless black gym audio'):")
-    for r in service.search_catalog_text("wireless black gym audio", top_k=2):
-        print(f"  -> {r['sku']}: {r['name']} (score={r['similarity']})")
+    hits = service.retrieve_knowledge("What is the warranty on the SmartBrew blender?", top_k=2)
+    for h in hits:
+        print(f"Rank #{h['rank']} [{h['chunk_id']}] (score={h['score']}): {h['passage']}")

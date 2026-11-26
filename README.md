@@ -6,7 +6,7 @@
 | :--- | :---: | :--- | :--- |
 | **Phase 1** | Days 01–04 | Classical ML | Complete |
 | **Phase 2** | Days 05–08 | Deep Learning & Vision | Complete |
-| **Phase 3** | Days 09–20 | Time-Series & GenAI (Generation Track Complete at Day 17) | In Progress |
+| **Phase 3** | Days 09–20 | Time-Series & GenAI | In Progress |
 | **Phase 4** | Days 21–35 | MLOps | Upcoming |
 
 ---
@@ -23,17 +23,17 @@
 | **15** | Diffusion | On-Brand Marketing Imagery Generator (`stable-diffusion-v1-5`) | Complete |
 | **16** | Img2Img & Video | Catalog Image Variations Sweep & Short Promo Clip Generator | Complete |
 | **17** | TTS & CLIP | Voice Support Replies & Multimodal (Text + Image) Catalog Search | Complete |
+| **18** | RAG Foundations | Product & Policy Vector DB (`all-MiniLM-L6-v2` + Persisted Index) | Complete |
 
 ---
 
-## Day 17: TTS Voice Replies & CLIP Multimodal Search (Generation Track Milestone)
+## Day 18: RAG Foundations — Vector DB & Semantic Knowledge Base
 
-| Capability | Model / Engine Architecture | Multimodal Interface | Output / Artifact |
+| Component | Configuration | Persistence & Metadata | Status |
 | :--- | :--- | :--- | :--- |
-| **Voice Support Assistant** (`TTSVoiceEngine`) | Hugging Face TTS (`facebook/mms-tts-eng`) + Pure-Python `wave` Synthesizer Fallback | Speaks grounded support chatbot responses for accessible voice UX | `assets/audio/support_voice_*.wav` |
-| **Multimodal Catalog Search** (`CLIPMultimodalSearch`) | Hugging Face CLIP (`openai/clip-vit-base-patch32`) + Shared Semantic-Visual Projection | Unified cosine-similarity retrieval via `search_by_text()` and `search_by_image()` | Ranked SKU matches + similarity scores |
+| **Document Chunker** (`recursive_chunk_text`) | `RecursiveCharacterTextSplitter` (`chunk_size=260`, `chunk_overlap=50`) | Preserves `doc_id`, `doc_type` (`policy`, `faq`, `product`), `sku`, and `title` | Active |
+| **Dense Vector Store** (`RetailVectorStore`) | `sentence-transformers/all-MiniLM-L6-v2` + `FAISS IndexFlatIP` (with L2-Normalized NumPy Fallback) | Persisted to `models/vector_db/chunks_metadata.json` & `vector_index.npz` | Active |
 
-### Generation Track Summary (Days 14–17 Complete)
-* **Text & Voice**: Grounded multi-turn support chatbot with review theme summarization and synthesized `.wav` voice replies.
-* **Image, Variations & Video**: Prompt-templated hero marketing assets, strength-swept `img2img` seasonal variations, and interpolated promo clips.
-* **Multimodal Retrieval**: Cross-modal text-to-product and image-to-product search over shared catalog embeddings.
+### Day 18 Architectural Highlights
+* **Coherent Passage Chunking**: Overlapping sentence-aware chunks prevent policy conditions (such as return windows and warranty exceptions) from being split mid-clause.
+* **Persistent Disk Index**: Pre-computed embeddings and chunk metadata are serialized under `models/vector_db/` so downstream RAG pipelines (Days 19–20) load instantaneously without re-embedding the catalog.
